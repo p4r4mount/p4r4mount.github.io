@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>ET-Net: Event-based Video Reconstruction Using Transformer | Song's blog</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Event-based Video Reconstruction Using TransformerAbstract：​    CNN重构不错，但是卷积的内在的局部结构（intrinsic locality）并不支持建模长时间的依赖，而许多视觉任务需要长时间的重构。在我们的论文中，我们提出了一种混合的CNN-Transformer网络来进行基于事件的视频重构，该网络的优势是能够利用CNN的局部信息">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ET-Net: Event-based Video Reconstruction Using Transformer">
+<meta property="og:url" content="http://example.com/2022/10/30/ET-Net-Event-based-Video-Reconstruction-Using-Transformer/index.html">
+<meta property="og:site_name" content="Song&#39;s blog">
+<meta property="og:description" content="Event-based Video Reconstruction Using TransformerAbstract：​    CNN重构不错，但是卷积的内在的局部结构（intrinsic locality）并不支持建模长时间的依赖，而许多视觉任务需要长时间的重构。在我们的论文中，我们提出了一种混合的CNN-Transformer网络来进行基于事件的视频重构，该网络的优势是能够利用CNN的局部信息">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-10-30T12:33:45.000Z">
+<meta property="article:modified_time" content="2022-10-30T12:37:19.077Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/10/30/ET-Net-Event-based-Video-Reconstruction-Using-Transformer/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ET-Net: Event-based Video Reconstruction Using Transformer',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-30 20:37:19'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Song's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Song's blog</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ET-Net: Event-based Video Reconstruction Using Transformer</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-10-30T12:33:45.000Z" title="Created 2022-10-30 20:33:45">2022-10-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-10-30T12:37:19.077Z" title="Updated 2022-10-30 20:37:19">2022-10-30</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ET-Net: Event-based Video Reconstruction Using Transformer"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="Event-based-Video-Reconstruction-Using-Transformer"><a href="#Event-based-Video-Reconstruction-Using-Transformer" class="headerlink" title="Event-based Video Reconstruction Using Transformer"></a>Event-based Video Reconstruction Using Transformer</h3><h4 id="Abstract："><a href="#Abstract：" class="headerlink" title="Abstract："></a>Abstract：</h4><p>​    CNN重构不错，但是卷积的内在的局部结构（intrinsic locality）并不支持建模长时间的依赖，而许多视觉任务需要长时间的重构。在我们的论文中，我们提出了一种混合的CNN-Transformer网络来进行基于事件的视频重构，该网络的优势是能够利用CNN的局部信息与Transformer的全局上下文信息。除此之外，我们进一步提出了一个Token Pyramid Aggregation策略，以实现多尺度的token集成，在token空间中关联内部和交叉的语义概念。</p>
+<p>Code：<a target="_blank" rel="noopener" href="https://github.com/WarranWeng/ET-Net">https://github.com/WarranWeng/ET-Net</a></p>
+<h4 id="Contribution："><a href="#Contribution：" class="headerlink" title="Contribution："></a>Contribution：</h4><ul>
+<li>提出了ET-Net，一个新型的CNN-Transformer混合模型</li>
+<li>TPA策略，用于多尺度token融合</li>
+<li>与CNN对比实验，验证架构有效性</li>
+</ul>
+<h4 id="3-Proposed-Method："><a href="#3-Proposed-Method：" class="headerlink" title="3.Proposed Method："></a>3.Proposed Method：</h4><p><img src="/2022/10/30/ET-Net-Event-based-Video-Reconstruction-Using-Transformer/1.png" alt="1"></p>
+<h5 id="3-1-Event-Representation："><a href="#3-1-Event-Representation：" class="headerlink" title="3.1 Event Representation："></a>3.1 Event Representation：</h5><p>Voxel Grid B=5</p>
+<h5 id="Recurrent-Convolution-Backbone（RCB）："><a href="#Recurrent-Convolution-Backbone（RCB）：" class="headerlink" title="Recurrent Convolution Backbone（RCB）："></a>Recurrent Convolution Backbone（RCB）：</h5><p>​    我们不在事件vg上直接执行序列化，而是先feed到RCB结构中去，RCB包含一个head和三个卷积block，head把$V\in \mathbb{R}^{B\times H\times W}$ 转化为初始尺寸特征$f_0^{RCB}\in\mathbb{R}^{C_0\times H\times W}$ ，此处设置$C_0=32$ . </p>
+<p>​    利用连续帧间的时序一致性有利于事件的重构，在每个Recurrent block中加一个ConvLSTM来增强重构的时序稳定性。除此以外，在每个Reccurrent块中我们使用一个卷积层（步长为2），来进行尺寸减半的下采样。同时，通道数翻倍。因此，三个重叠的r块有三个尺寸的feature map，方程写为：<br>$$<br>f_l^{RCB},s_l^t=f_l^{rec}(f_{l-1}^{RCB},s_l^{t-1}),<br>$$<br>​    通过RCB，我们得到了多尺度特征金字塔${f_l^{RCB}|l\in{0,1,2,3}}$，然后先后传入token金字塔融合模块（TPA）与多层次上采样模块（MLU）。</p>
+<h5 id="Token-Pyramid-Aggregation（TPA）："><a href="#Token-Pyramid-Aggregation（TPA）：" class="headerlink" title="Token Pyramid Aggregation（TPA）："></a>Token Pyramid Aggregation（TPA）：</h5><p>​    有些基于transformer的重构只有单一尺度的token，比较trash，多尺度聚合goodgood。因此，我们设计了基于Transformer的Token金字塔聚合模块，对RCB提取的特征金字塔进行内部依赖和交叉依赖建模。首先，对RCB提取的特征金字塔中的每个特征进行序列化操作，具体来说，将特征$f_l^{RCB}\in\mathbb{R}^{C_l\times \frac{H}{2^l}\times \frac{W}{2^l}}$划分进小的patches中去，大小为$C_l\times \frac{P}{2^l}\times \frac{P}{2^l}$，我们取P=8，一共有$(\frac{HW}{P^2})$ 个patches，然后将这些patches展开成一维，得到序列${f_{l,i}^P\in\mathbb{R}^\frac{P^2C_l}{4^l}|i\in{0,\dots,\frac{HW}{P^2}-1}}$，然后，我们使用线性投影$f_l^{proj}$和正弦位置编码$e^i\in\mathbb{R}^D$将每个patch映射到一维的embedding token $T_{l,i}\in\mathbb{R}^D$,方程为：<br>$$<br>T_{l,i}=f_l^{proj}(f_{l,i}^P)+e_i.<br>$$<br>​    随后，token序列就被重新表达为token矩阵 $Z_l\in\mathbb{R}^{\frac{HW}{P^2}\times D}$,这样就可以传入Transformer Blocks 本文取D=256，下图为块的具体内容，N个编码，M个解码，有skip connection。对于每个尺度，我们都采用一个Tr块对特征金字塔的内部依赖和相互依赖进行建模。块中堆叠普通Tr编码器，用self-attention提取每个token中的内部依赖性；Tr解码器构建了相邻尺寸的tokens的相互依赖。</p>
+<p><img src="/2022/10/30/ET-Net-Event-based-Video-Reconstruction-Using-Transformer/2.png" alt="2"></p>
+<p>​    注意到key和value向量都是从更低的尺寸feed过来的，query是从当前编码器feed过来的，这种设计赋予了我们的网络学会提取和交换多尺度上下文的能力。</p>
+<p>​    除此之外，我们还加入了残差连接来维持Tr编码器的内部依赖，编码解码通过skip连接得到$Z_l’$，融合所有的Z得到hidden token矩阵，$Z^{TPA}$。</p>
+<h5 id="Multi-Level-Upsampler（MLU）："><a href="#Multi-Level-Upsampler（MLU）：" class="headerlink" title="Multi-Level Upsampler（MLU）："></a>Multi-Level Upsampler（MLU）：</h5><p>​    注意到$Z^{TPA}\in\mathbb{R}^{\frac{HW}{P^2}\times D}$和$Z_l$具有同样的维度，分辨率与起始分辨率不同，因此我们设计了一个多层次的上采样层来从hidden token矩阵和特征金字塔恢复全分辨率的强度图像$\mathcal{I}\in\mathbb{R}^{H\times W}$ ,其中前者用多尺度特征集捕获long-range依赖，后者提供局部信息，这两种数据流同时具有CNN和Transformer的优势，都用比只使用一种好多了。4.3可以证明。</p>
+<p>​    MLU由三个上采样块和一个尾巴组成，每个上采样块由双线性插值操作后接卷积层构成，上采样因子为2，最大限度缓解对抗效应。在输入$Z^{TPA}\in\mathbb{R}^{\frac{HW}{P^2}\times D}$到MLU之前，我们将其reshape成三维特征$f^{TPA}\in\mathbb{R}^{D\times\frac{H}{P}\times\frac{W}{P}}$，形式上，上采样块的过程可以表述为：<br>$$<br>\begin{equation}<br>\mathbf{f}<em>{l}^{M L U}=\left{\begin{array}{c}<br>f</em>{u p}\left(\mathbf{f}<em>{l+1}^{M L U}+\mathbf{f}</em>{l+1}^{R C B}\right), l=0,1,2 \<br>\mathbf{f}^{T P A}, l=3<br>\end{array}\right.<br>\end{equation}<br>$$<br>​    其中$\mathbf{f}<em>{l}^{M L U}$表示第l个尺寸上采样后的结果，尾巴是个简单卷积，输入为$\mathbf{f}</em>{0}^{M L U}$和$\mathbf{f}_{0}^{R C B}$之和，输出为重构的强度图像$\mathcal{I}\in[0,0]^{H\times W}$.</p>
+<h5 id="3-3-Loss-Function："><a href="#3-3-Loss-Function：" class="headerlink" title="3.3 Loss Function："></a>3.3 Loss Function：</h5><p>​    和E2Vid一样用LPIPS和光流，参数设置有所不同，损失如下：<br>$$<br>\begin{equation}<br>\mathcal{L}=\sum_{t=0}^{T} \mathcal{L}<em>{R}^{t}+\lambda</em>{T C} \sum_{t=L_{0}}^{T} \mathcal{L}_{T C}^{t}<br>\end{equation}<br>$$<br>​    其中T=40，L0=2，λTC=1。</p>
+<h4 id="4-Experiments："><a href="#4-Experiments：" class="headerlink" title="4.Experiments："></a>4.Experiments：</h4><h5 id="Training-dataset："><a href="#Training-dataset：" class="headerlink" title="Training dataset："></a>Training dataset：</h5></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/10/30/ET-Net-Event-based-Video-Reconstruction-Using-Transformer/">http://example.com/2022/10/30/ET-Net-Event-based-Video-Reconstruction-Using-Transformer/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/10/28/first-article/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">first_article</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Event-based-Video-Reconstruction-Using-Transformer"><span class="toc-number">1.</span> <span class="toc-text">Event-based Video Reconstruction Using Transformer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Abstract%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">Abstract：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Contribution%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">Contribution：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Proposed-Method%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">3.Proposed Method：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-Event-Representation%EF%BC%9A"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 Event Representation：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Recurrent-Convolution-Backbone%EF%BC%88RCB%EF%BC%89%EF%BC%9A"><span class="toc-number">1.3.2.</span> <span class="toc-text">Recurrent Convolution Backbone（RCB）：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Token-Pyramid-Aggregation%EF%BC%88TPA%EF%BC%89%EF%BC%9A"><span class="toc-number">1.3.3.</span> <span class="toc-text">Token Pyramid Aggregation（TPA）：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Multi-Level-Upsampler%EF%BC%88MLU%EF%BC%89%EF%BC%9A"><span class="toc-number">1.3.4.</span> <span class="toc-text">Multi-Level Upsampler（MLU）：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-Loss-Function%EF%BC%9A"><span class="toc-number">1.3.5.</span> <span class="toc-text">3.3 Loss Function：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Experiments%EF%BC%9A"><span class="toc-number">1.4.</span> <span class="toc-text">4.Experiments：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Training-dataset%EF%BC%9A"><span class="toc-number">1.4.1.</span> <span class="toc-text">Training dataset：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/30/ET-Net-Event-based-Video-Reconstruction-Using-Transformer/" title="ET-Net: Event-based Video Reconstruction Using Transformer"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ET-Net: Event-based Video Reconstruction Using Transformer"/></a><div class="content"><a class="title" href="/2022/10/30/ET-Net-Event-based-Video-Reconstruction-Using-Transformer/" title="ET-Net: Event-based Video Reconstruction Using Transformer">ET-Net: Event-based Video Reconstruction Using Transformer</a><time datetime="2022-10-30T12:33:45.000Z" title="Created 2022-10-30 20:33:45">2022-10-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/28/first-article/" title="first_article"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="first_article"/></a><div class="content"><a class="title" href="/2022/10/28/first-article/" title="first_article">first_article</a><time datetime="2022-10-28T13:20:03.000Z" title="Created 2022-10-28 21:20:03">2022-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/28/hello-world/" title="Hello World"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2022/10/28/hello-world/" title="Hello World">Hello World</a><time datetime="2022-10-28T10:41:26.102Z" title="Created 2022-10-28 18:41:26">2022-10-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

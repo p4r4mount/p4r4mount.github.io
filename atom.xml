@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-28T18:35:08.122Z</updated>
+  <updated>2022-10-30T12:37:19.077Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,19 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ET-Net: Event-based Video Reconstruction Using Transformer</title>
+    <link href="http://example.com/2022/10/30/ET-Net-Event-based-Video-Reconstruction-Using-Transformer/"/>
+    <id>http://example.com/2022/10/30/ET-Net-Event-based-Video-Reconstruction-Using-Transformer/</id>
+    <published>2022-10-30T12:33:45.000Z</published>
+    <updated>2022-10-30T12:37:19.077Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Event-based-Video-Reconstruction-Using-Transformer"><a href="#Event-based-Video-Reconstruction-Using-Transformer" class="headerlink" title="Event-based Video Reconstruction Using Transformer"></a>Event-based Video Reconstruction Using Transformer</h3><h4 id="Abstract："><a href="#Abstract：" class="headerlink" title="Abstract："></a>Abstract：</h4><p>​    CNN重构不错，但是卷积的内在的局部结构（intrinsic locality）并不支持建模长时间的依赖，而许多视觉任务需要长时间的重构。在我们的论文中，我们提出了一种混合的CNN-Transformer网络来进行基于事件的视频重构，该网络的优势是能够利用CNN的局部信息与Transformer的全局上下文信息。除此之外，我们进一步提出了一个Token Pyramid Aggregation策略，以实现多尺度的token集成，在token空间中关联内部和交叉的语义概念。</p><p>Code：<a href="https://github.com/WarranWeng/ET-Net">https://github.com/WarranWeng/ET-Net</a></p><h4 id="Contribution："><a href="#Contribution：" class="headerlink" title="Contribution："></a>Contribution：</h4><ul><li>提出了ET-Net，一个新型的CNN-Transformer混合模型</li><li>TPA策略，用于多尺度token融合</li><li>与CNN对比实验，验证架构有效性</li></ul><h4 id="3-Proposed-Method："><a href="#3-Proposed-Method：" class="headerlink" title="3.Proposed Method："></a>3.Proposed Method：</h4><p><img src="/2022/10/30/ET-Net-Event-based-Video-Reconstruction-Using-Transformer/1.png" alt="1"></p><h5 id="3-1-Event-Representation："><a href="#3-1-Event-Representation：" class="headerlink" title="3.1 Event Representation："></a>3.1 Event Representation：</h5><p>Voxel Grid B=5</p><h5 id="Recurrent-Convolution-Backbone（RCB）："><a href="#Recurrent-Convolution-Backbone（RCB）：" class="headerlink" title="Recurrent Convolution Backbone（RCB）："></a>Recurrent Convolution Backbone（RCB）：</h5><p>​    我们不在事件vg上直接执行序列化，而是先feed到RCB结构中去，RCB包含一个head和三个卷积block，head把$V\in \mathbb{R}^{B\times H\times W}$ 转化为初始尺寸特征$f_0^{RCB}\in\mathbb{R}^{C_0\times H\times W}$ ，此处设置$C_0=32$ . </p><p>​    利用连续帧间的时序一致性有利于事件的重构，在每个Recurrent block中加一个ConvLSTM来增强重构的时序稳定性。除此以外，在每个Reccurrent块中我们使用一个卷积层（步长为2），来进行尺寸减半的下采样。同时，通道数翻倍。因此，三个重叠的r块有三个尺寸的feature map，方程写为：<br>$$<br>f_l^{RCB},s_l^t=f_l^{rec}(f_{l-1}^{RCB},s_l^{t-1}),<br>$$<br>​    通过RCB，我们得到了多尺度特征金字塔${f_l^{RCB}|l\in{0,1,2,3}}$，然后先后传入token金字塔融合模块（TPA）与多层次上采样模块（MLU）。</p><h5 id="Token-Pyramid-Aggregation（TPA）："><a href="#Token-Pyramid-Aggregation（TPA）：" class="headerlink" title="Token Pyramid Aggregation（TPA）："></a>Token Pyramid Aggregation（TPA）：</h5><p>​    有些基于transformer的重构只有单一尺度的token，比较trash，多尺度聚合goodgood。因此，我们设计了基于Transformer的Token金字塔聚合模块，对RCB提取的特征金字塔进行内部依赖和交叉依赖建模。首先，对RCB提取的特征金字塔中的每个特征进行序列化操作，具体来说，将特征$f_l^{RCB}\in\mathbb{R}^{C_l\times \frac{H}{2^l}\times \frac{W}{2^l}}$划分进小的patches中去，大小为$C_l\times \frac{P}{2^l}\times \frac{P}{2^l}$，我们取P=8，一共有$(\frac{HW}{P^2})$ 个patches，然后将这些patches展开成一维，得到序列${f_{l,i}^P\in\mathbb{R}^\frac{P^2C_l}{4^l}|i\in{0,\dots,\frac{HW}{P^2}-1}}$，然后，我们使用线性投影$f_l^{proj}$和正弦位置编码$e^i\in\mathbb{R}^D$将每个patch映射到一维的embedding token $T_{l,i}\in\mathbb{R}^D$,方程为：<br>$$<br>T_{l,i}=f_l^{proj}(f_{l,i}^P)+e_i.<br>$$<br>​    随后，token序列就被重新表达为token矩阵 $Z_l\in\mathbb{R}^{\frac{HW}{P^2}\times D}$,这样就可以传入Transformer Blocks 本文取D=256，下图为块的具体内容，N个编码，M个解码，有skip connection。对于每个尺度，我们都采用一个Tr块对特征金字塔的内部依赖和相互依赖进行建模。块中堆叠普通Tr编码器，用self-attention提取每个token中的内部依赖性；Tr解码器构建了相邻尺寸的tokens的相互依赖。</p><p><img src="/2022/10/30/ET-Net-Event-based-Video-Reconstruction-Using-Transformer/2.png" alt="2"></p><p>​    注意到key和value向量都是从更低的尺寸feed过来的，query是从当前编码器feed过来的，这种设计赋予了我们的网络学会提取和交换多尺度上下文的能力。</p><p>​    除此之外，我们还加入了残差连接来维持Tr编码器的内部依赖，编码解码通过skip连接得到$Z_l’$，融合所有的Z得到hidden token矩阵，$Z^{TPA}$。</p><h5 id="Multi-Level-Upsampler（MLU）："><a href="#Multi-Level-Upsampler（MLU）：" class="headerlink" title="Multi-Level Upsampler（MLU）："></a>Multi-Level Upsampler（MLU）：</h5><p>​    注意到$Z^{TPA}\in\mathbb{R}^{\frac{HW}{P^2}\times D}$和$Z_l$具有同样的维度，分辨率与起始分辨率不同，因此我们设计了一个多层次的上采样层来从hidden token矩阵和特征金字塔恢复全分辨率的强度图像$\mathcal{I}\in\mathbb{R}^{H\times W}$ ,其中前者用多尺度特征集捕获long-range依赖，后者提供局部信息，这两种数据流同时具有CNN和Transformer的优势，都用比只使用一种好多了。4.3可以证明。</p><p>​    MLU由三个上采样块和一个尾巴组成，每个上采样块由双线性插值操作后接卷积层构成，上采样因子为2，最大限度缓解对抗效应。在输入$Z^{TPA}\in\mathbb{R}^{\frac{HW}{P^2}\times D}$到MLU之前，我们将其reshape成三维特征$f^{TPA}\in\mathbb{R}^{D\times\frac{H}{P}\times\frac{W}{P}}$，形式上，上采样块的过程可以表述为：<br>$$<br>\begin{equation}<br>\mathbf{f}<em>{l}^{M L U}=\left{\begin{array}{c}<br>f</em>{u p}\left(\mathbf{f}<em>{l+1}^{M L U}+\mathbf{f}</em>{l+1}^{R C B}\right), l=0,1,2 \<br>\mathbf{f}^{T P A}, l=3<br>\end{array}\right.<br>\end{equation}<br>$$<br>​    其中$\mathbf{f}<em>{l}^{M L U}$表示第l个尺寸上采样后的结果，尾巴是个简单卷积，输入为$\mathbf{f}</em>{0}^{M L U}$和$\mathbf{f}_{0}^{R C B}$之和，输出为重构的强度图像$\mathcal{I}\in[0,0]^{H\times W}$.</p><h5 id="3-3-Loss-Function："><a href="#3-3-Loss-Function：" class="headerlink" title="3.3 Loss Function："></a>3.3 Loss Function：</h5><p>​    和E2Vid一样用LPIPS和光流，参数设置有所不同，损失如下：<br>$$<br>\begin{equation}<br>\mathcal{L}=\sum_{t=0}^{T} \mathcal{L}<em>{R}^{t}+\lambda</em>{T C} \sum_{t=L_{0}}^{T} \mathcal{L}_{T C}^{t}<br>\end{equation}<br>$$<br>​    其中T=40，L0=2，λTC=1。</p><h4 id="4-Experiments："><a href="#4-Experiments：" class="headerlink" title="4.Experiments："></a>4.Experiments：</h4><h5 id="Training-dataset："><a href="#Training-dataset：" class="headerlink" title="Training dataset："></a>Training dataset：</h5>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;Event-based-Video-Reconstruction-Using-Transformer&quot;&gt;&lt;a href=&quot;#Event-based-Video-Reconstruction-Using-Transformer&quot; class=&quot;headerlink&quot;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>first_article</title>
     <link href="http://example.com/2022/10/28/first-article/"/>
     <id>http://example.com/2022/10/28/first-article/</id>
     <published>2022-10-28T13:20:03.000Z</published>
-    <updated>2022-10-28T18:35:08.122Z</updated>
+    <updated>2022-10-30T12:36:49.962Z</updated>
     
-    <content type="html"><![CDATA[<p>This is my first blog, wuhuwuhu</p><p><img src="/2022/10/28/first-article/github-event.jpg" alt="查看源图像"></p>]]></content>
+    <content type="html"><![CDATA[<p>This is my first blog, wuhuwuhu</p><p><img src="/2022/10/28/first-article/github-event.jpg" alt="1"></p>]]></content>
     
     
       
       
     <summary type="html">&lt;p&gt;This is my first blog, wuhuwuhu&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2022/10/28/first-article/github-event.jpg&quot; alt=&quot;查看源图像&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/10/28/first-article/github-event.jpg&quot; alt=&quot;1&quot;&gt;&lt;/p&gt;
 </summary>
       
     
