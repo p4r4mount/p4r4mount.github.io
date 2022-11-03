@@ -1,3 +1,4 @@
+http://example.com/2022/11/03/E2Vid-High-Speed-and-High-Dynamic-Range-Video-with-an-Event-Camera/
 http://example.com/2022/10/30/ET-Net-Event-based-Video-Reconstruction-Using-Transformer/
 http://example.com/categories/index.html
 http://example.com/tags/index.html
