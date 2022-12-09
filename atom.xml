@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-11-20T06:10:39.312Z</updated>
+  <updated>2022-12-09T02:10:58.230Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SPADE-E2VID: Spatially-Adaptive Denormalization for Event-Based Video Reconstruction</title>
+    <link href="http://example.com/2022/12/09/spade-e2vid/"/>
+    <id>http://example.com/2022/12/09/spade-e2vid/</id>
+    <published>2022-12-09T01:58:03.000Z</published>
+    <updated>2022-12-09T02:10:58.230Z</updated>
+    
+    <content type="html"><![CDATA[<h1>SPADE-E2VID: Spatially-Adaptive Denormalization for Event-Based Video Reconstruction</h1><h2 id="abstract">Abstract</h2><p>​与传统的以帧为单位拍摄视频的相机相比，基于事件的相机有许多优点。事件相机具有高时间分辨率，高动态范围，几乎不存在模糊。当在每个像素中报告亮度的变化时，事件传感器产生的数据形成了一个事件链。这一特性使得直接应用现有算法和利用事件摄像机数据变得困难。由于神经网络的发展，基于事件的图像重建取得了重要进展。即使这些神经网络实现了精确的重建，同时保留了事件相机的大部分属性，仍然需要一个初始化时间，重建帧的质量需要尽可能高。在这项工作中，我们提出了SPADE-E2VID神经网络模型，该模型提高了基于事件的重构视频中早期帧的质量，以及整体对比度。SPADE-E2VID模型通过提高第一个重构帧的质量MSE误差为15.87%，SSIM为4.15%，LPIPS为2.5%。此外，我们模型中的SPADE层允许训练我们的模型在没有时间损失函数的情况下重建视频。我们的模型的另一个优点是它有更快的训练时间。在多对一训练模式中，我们避免在每个步骤中运行损失函数，只在每个循环结束时执行一次损失函数。在本工作中，我们也进行了没有极性数据的事件相机的实验。我们的模型在高清分辨率(1200 × 800)下产生高质量的无极性事件视频重建。</p><h2 id="contribution">Contribution</h2><ul><li>提升最开始重构帧的重构质量</li><li>用spade代替显式时间一致性损失函数</li><li>训练时间更短</li><li>模型适用于不同事件相机与非极性事件（检测）</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;SPADE-E2VID: Spatially-Adaptive Denormalization for Event-Based Video Reconstruction&lt;/h1&gt;
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+&lt;p&gt;​	与传统的以帧为单位</summary>
+      
+    
+    
+    
+    <category term="paper" scheme="http://example.com/categories/paper/"/>
+    
+    
+    <category term="Event camera" scheme="http://example.com/tags/Event-camera/"/>
+    
+  </entry>
   
   <entry>
     <title>E2vid+: Reducing the Sim-to-Real Gap for Event</title>
@@ -97,11 +123,11 @@
   </entry>
   
   <entry>
-    <title>first_article</title>
-    <link href="http://example.com/2022/10/28/first-article/"/>
-    <id>http://example.com/2022/10/28/first-article/</id>
+    <title>hexo相关操作</title>
+    <link href="http://example.com/2022/10/28/hexo%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/"/>
+    <id>http://example.com/2022/10/28/hexo%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/</id>
     <published>2022-10-28T13:20:03.000Z</published>
-    <updated>2022-10-30T12:36:49.962Z</updated>
+    <updated>2022-12-09T01:52:10.111Z</updated>
     
     <content type="html"><![CDATA[<p>This is my first blog, wuhuwuhu</p><p><img src="github-event.jpg" alt="1"></p>]]></content>
     
@@ -111,26 +137,6 @@
     <summary type="html">&lt;p&gt;This is my first blog, wuhuwuhu&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;github-event.jpg&quot; alt=&quot;1&quot;&gt;&lt;/p&gt;
 </summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://example.com/2022/10/28/hello-world/"/>
-    <id>http://example.com/2022/10/28/hello-world/</id>
-    <published>2022-10-28T10:41:26.102Z</published>
-    <updated>2022-10-28T10:11:57.751Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="quick-start">Quick Start</h2><h3 id="create-a-new-post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="run-server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="generate-static-files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="deploy-to-remote-sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
       
     
     
