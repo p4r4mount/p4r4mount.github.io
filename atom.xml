@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-12-09T02:10:58.230Z</updated>
+  <updated>2022-12-10T03:06:01.641Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于空间自适应归一化技术（SPADE）</title>
+    <link href="http://example.com/2022/12/10/%E5%85%B3%E4%BA%8E%E7%A9%BA%E9%97%B4%E8%87%AA%E9%80%82%E5%BA%94%E5%BD%92%E4%B8%80%E5%8C%96%E6%8A%80%E6%9C%AF%EF%BC%88SPADE%EF%BC%89/"/>
+    <id>http://example.com/2022/12/10/%E5%85%B3%E4%BA%8E%E7%A9%BA%E9%97%B4%E8%87%AA%E9%80%82%E5%BA%94%E5%BD%92%E4%B8%80%E5%8C%96%E6%8A%80%E6%9C%AF%EF%BC%88SPADE%EF%BC%89/</id>
+    <published>2022-12-10T02:50:03.000Z</published>
+    <updated>2022-12-10T03:06:01.641Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="semantic-image-synthesis-with-spatially-adaptive-normalization">Semantic Image Synthesis with Spatially-Adaptive Normalization</h2><p>GauGAN是Nvidia在CVPR 2019的oral文章，旨在用分割掩码生成真实图像，具体用到的算法</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;semantic-image-synthesis-with-spatially-adaptive-normalization&quot;&gt;Semantic Image Synthesis with Spatially-Adaptive Normalization&lt;/h2&gt;
+</summary>
+      
+    
+    
+    
+    <category term="paper" scheme="http://example.com/categories/paper/"/>
+    
+    
+    <category term="Image Generation" scheme="http://example.com/tags/Image-Generation/"/>
+    
+  </entry>
   
   <entry>
     <title>SPADE-E2VID: Spatially-Adaptive Denormalization for Event-Based Video Reconstruction</title>
