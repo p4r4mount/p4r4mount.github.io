@@ -4,7 +4,7 @@
   <url>
     <loc>http://example.com/2022/12/09/spade-e2vid/</loc>
     
-    <lastmod>2022-12-10</lastmod>
+    <lastmod>2022-12-11</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -76,7 +76,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2022-12-10</lastmod>
+    <lastmod>2022-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -84,14 +84,14 @@
   
   <url>
     <loc>http://example.com/tags/Event-camera/</loc>
-    <lastmod>2022-12-10</lastmod>
+    <lastmod>2022-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Image-Generation/</loc>
-    <lastmod>2022-12-10</lastmod>
+    <lastmod>2022-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -100,7 +100,7 @@
   
   <url>
     <loc>http://example.com/categories/paper/</loc>
-    <lastmod>2022-12-10</lastmod>
+    <lastmod>2022-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
