@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-12-10T03:06:01.641Z</updated>
+  <updated>2022-12-12T14:59:13.655Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,19 +17,22 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>关于空间自适应归一化技术（SPADE）</title>
-    <link href="http://example.com/2022/12/10/%E5%85%B3%E4%BA%8E%E7%A9%BA%E9%97%B4%E8%87%AA%E9%80%82%E5%BA%94%E5%BD%92%E4%B8%80%E5%8C%96%E6%8A%80%E6%9C%AF%EF%BC%88SPADE%EF%BC%89/"/>
-    <id>http://example.com/2022/12/10/%E5%85%B3%E4%BA%8E%E7%A9%BA%E9%97%B4%E8%87%AA%E9%80%82%E5%BA%94%E5%BD%92%E4%B8%80%E5%8C%96%E6%8A%80%E6%9C%AF%EF%BC%88SPADE%EF%BC%89/</id>
+    <title>图像生成中的归一化（bn）</title>
+    <link href="http://example.com/2022/12/10/%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E4%B8%AD%E7%9A%84%E5%BD%92%E4%B8%80%E5%8C%96%E5%B1%82%EF%BC%88bn%EF%BC%89/"/>
+    <id>http://example.com/2022/12/10/%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E4%B8%AD%E7%9A%84%E5%BD%92%E4%B8%80%E5%8C%96%E5%B1%82%EF%BC%88bn%EF%BC%89/</id>
     <published>2022-12-10T02:50:03.000Z</published>
-    <updated>2022-12-10T03:06:01.641Z</updated>
+    <updated>2022-12-12T14:59:13.655Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="semantic-image-synthesis-with-spatially-adaptive-normalization">Semantic Image Synthesis with Spatially-Adaptive Normalization</h2><p>GauGAN是Nvidia在CVPR 2019的oral文章，旨在用分割掩码生成真实图像，具体用到的算法</p>]]></content>
+    <content type="html"><![CDATA[<h1>图像生成中的各种归一化技术</h1><p>归一化（Normalization）在深度学习中往往指对激活层的输入进行归一化，从而解决一些训练中的问题。</p><p>本文主要介绍以下几种归一化技术：</p><ul><li><strong>BN - Batch Normalization</strong></li><li><strong>LN - Layer Normalization</strong></li><li><strong>IN - Instance Normalization</strong></li><li><strong>CIN - Conditional Instance Normalization</strong></li><li><strong>AdaIN - Adaptive Instance Normalization</strong></li><li><strong>SPADE - Spatial Adaptive Normalization</strong></li><li><strong>SEAN - Semantic Region-Adaptive Normalization</strong></li></ul><h2 id="bn-batch-normalization">BN - Batch Normalization</h2><p>论文：<a href="https://arxiv.org/pdf/1502.03167.pdf">Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</a></p><p>BN在2015年由Sergey Ioffe和Christian Szegedy提出，主要用于加速网络的训练过程。网络训练的过程中，每层输入的分布会随着上一层参数的变化而变化，因此梯度容易出问题。作者将这种现象定义为Internal Covariate Shift（ICS），为了解决这个问题，作者尝试以mini-batch为单位对每层作归一化，具体操作如下所示，其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo separator="true">,</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">\gamma,\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span>为需要学习的参数。bn对每个通道是独立的，一般插在卷积之后，激活层之前。</p><p><img src="image-20221212215449259.png" alt="image-20221212215449259"></p><h2 id="ln-layer-normalization">LN - Layer Normalization</h2><p>论文：<a href="https://arxiv.org/pdf/1607.06450.pdf">Layer Normalization</a></p><p>LN是Hinton在2016年提出的，LN主要是为了解决BN的计算必须依赖mini-batch的size大小，这会导致BN无法在RNN中使用，因为不同的time-step对用不同的统计特征。LN与BN最大的差别就是：BN是取不同样本的同一通道特征的做归一化，而LN是取同一样本的不同通道特征做归一化。如下图所示，其统计量只与隐层节点数有关。</p><p><img src="image-20221212225645610.png" alt="image-20221212225645610"></p><p><img src="image-20221212225751452.png" alt="image-20221212225751452"></p><p>​在二者都能用的情况下，一般BN更好，不容易损失特征信息。</p><p>GauGAN是Nvidia在CVPR 2019的oral文章，旨在用分割掩码生成真实图像，具体用到的算法</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;semantic-image-synthesis-with-spatially-adaptive-normalization&quot;&gt;Semantic Image Synthesis with Spatially-Adaptive Normalization&lt;/h2&gt;
-</summary>
+    <summary type="html">&lt;h1&gt;图像生成中的各种归一化技术&lt;/h1&gt;
+&lt;p&gt;归一化（Normalization）在深度学习中往往指对激活层的输入进行归一化，从而解决一些训练中的问题。&lt;/p&gt;
+&lt;p&gt;本文主要介绍以下几种归一化技术：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;BN - Batch Norm</summary>
       
     
     
