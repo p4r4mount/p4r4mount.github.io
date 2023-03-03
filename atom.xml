@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-03T12:35:22.955Z</updated>
+  <updated>2023-03-03T12:34:14.210Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,19 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>markdown</title>
-    <link href="http://example.com/2023/03/03/markdown/"/>
-    <id>http://example.com/2023/03/03/markdown/</id>
-    <published>2023-03-03T12:35:22.000Z</published>
-    <updated>2023-03-03T12:35:22.955Z</updated>
-    
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>Back to Event Basics:Self-Supervised Learning of Image Reconstruction</title>
@@ -237,6 +224,34 @@
     
     
     <category term="Event camera" scheme="http://example.com/tags/Event-camera/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>markdown</title>
+    <link href="http://example.com/2022/10/29/markdown/"/>
+    <id>http://example.com/2022/10/29/markdown/</id>
+    <published>2022-10-29T12:35:22.000Z</published>
+    <updated>2023-03-03T12:41:19.403Z</updated>
+    
+    <content type="html"><![CDATA[<center style="color:#C0C0C">Fig 1 Proposed event-based VFI approach.</center> <p>行内公式：$ $</p><p>行间公式：$$ $$</p><p>上下标：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>x</mi><mrow><mn>2</mn><mo>−</mo><mi>i</mi></mrow><mn>6</mn></msubsup></mrow><annotation encoding="application/x-tex">x_{2-i}^{6}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.131103em;vertical-align:-0.316995em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mbin mtight">−</span><span class="mord mathdefault mtight">i</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.316995em;"><span></span></span></span></span></span></span></span></span></span>   x_{2-i}^{6}</p><p>适应括号：\left \right</p><p>绝对值：\lvert \rvert  两条竖线：\lVert \rVert</p><p>定义符号：\triangleq <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≜</mo></mrow><annotation encoding="application/x-tex">\triangleq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.99865em;vertical-align:-0.08198em;"></span><span class="mrel amsrm">≜</span></span></span></span></p><p>尖括号：\langle \rangle</p><p>上下取整：\lceil \rceil    \lfloor \rfloor</p><p>求和：\sum_{}^{}</p><p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi mathvariant="script">I</mi><mo>^</mo></mover><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\hat{\mathcal{I}}_{k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0967699999999998em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9467699999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.07382em;">I</span></span></span></span><span style="top:-3.25233em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.13889em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p><p>积分：\int_{r=1}^\infty   \iint \iiint</p><p>连乘：\prod_{}^{}</p><p><img src="%E7%B1%BB%E4%BC%BC%E7%AC%A6%E5%8F%B7.png" alt="类似符号"></p><p>分式：\frac {}{}  连分式时：\cfrac</p><p>根式：\sqrt[4]{\frac xy}</p><p>加粗：\textbf{}</p><p>属于：\in</p><p>乘号：\times  加减号：\pm 除号：\div</p><p>点乘：\cdot</p><p>酷epsilon：\varelsilon</p><p>正三角：\Delta <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">\Delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Δ</span></span></span></span></p><p>倒三角：\nabla <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∇</mi></mrow><annotation encoding="application/x-tex">\nabla</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">∇</span></span></span></span></p><p>加横线帽子： \overline{}</p><p>约等号：\approx</p><p>小于等于：\leqslant  \leq</p><p>大于等于：\geqslant \geq</p><p>远大于，远小于：\gg  \ll</p><p>波浪号：\sim</p><p>低省略号：\dots  \cdots</p><p>垂直：\perp <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⊥</mo></mrow><annotation encoding="application/x-tex">\perp</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mrel">⊥</span></span></span></span></p><p>平行：\parallel <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∥</mo></mrow><annotation encoding="application/x-tex">\parallel</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mrel">∥</span></span></span></span></p><p><img src="%E5%AD%97%E6%AF%8D.png" alt="字母"></p><p><img src="%E5%AD%97%E6%AF%8D2.png" alt="字母2"></p><p><img src="%E8%8A%B1%E4%BD%93.png" alt="花体"></p><p><img src="%E8%8A%B1%E4%BD%93%E5%85%AC%E5%BC%8F.png" alt="花体公式"></p><p>页眉页码：在cls中找set header</p><p><a href="https://zhuanlan.zhihu.com/p/114676221">Latex的页脚和页眉 - 知乎 (zhihu.com)</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;center style=&quot;color:#C0C0C&quot;&gt;Fig 1 Proposed event-based VFI approach.
+&lt;/center&gt; 
+&lt;p&gt;行内公式：$ $&lt;/p&gt;
+&lt;p&gt;行间公式：$$ $$&lt;/p&gt;
+&lt;p&gt;上下标：&lt;span class=&quot;katex</summary>
+      
+    
+    
+    
+    <category term="杂杂技术" scheme="http://example.com/categories/%E6%9D%82%E6%9D%82%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="markdown" scheme="http://example.com/tags/markdown/"/>
     
   </entry>
   
