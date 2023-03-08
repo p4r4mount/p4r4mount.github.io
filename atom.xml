@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-03T14:46:07.717Z</updated>
+  <updated>2023-03-08T16:08:48.625Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>some ideas</title>
+    <link href="http://example.com/2023/03/08/some-ideas/"/>
+    <id>http://example.com/2023/03/08/some-ideas/</id>
+    <published>2023-03-08T15:29:13.000Z</published>
+    <updated>2023-03-08T16:08:48.625Z</updated>
+    
+    <content type="html"><![CDATA[<p>主要思路: 在e2vid网络的基础上进行改进，从两个方面入手：1.从视频生成的角度出发，在网络中融入网络，增强网络的时序相关性（temporal coherence）2.从图像生成的角度出发，增强网络重构的空间约束，使每一帧重构图像质量更高（修改bn，类似adain，spade，sean）。</p><p>视频生成调研：</p><p>1.Video-to-Video Synthesis：<a href="https://readpaper.com/pdf-annotate/note?pdfId=4498388548775993345&amp;noteId=1684228062499341568">Deep Video Inpainting (readpaper.com)</a></p><p><a href="https://zhuanlan.zhihu.com/p/90363315">Video-to-Video Synthesis 高清视频生成 论文解读 - 知乎 (zhihu.com)</a></p><p>建模为马尔可夫过程求解</p><p>2.Deep Video Inpainting：图像修复的一篇工作，可以学习一下其中结合光流的方法，跟第一篇一起看</p><p><a href="https://zhuanlan.zhihu.com/p/105280146">Deep Video Inpainting论文以及代码解析 - 知乎 (zhihu.com)</a></p><p><a href="https://github.com/mcahny/Deep-Video-Inpainting">mcahny/Deep-Video-Inpainting: Official pytorch implementation for “Deep Video Inpainting” (CVPR 2019) (github.com)</a></p><p>3.<a href="https://zhuanlan.zhihu.com/p/83994594">视频生成/预测任务如何保证 Temporal coherence 方法小结 - 知乎 (zhihu.com)</a></p><p>4.e2vid用的方法 ，光流损失</p><p><a href="https://zhuanlan.zhihu.com/p/105467050">Learning Blind Video Temporal Consistency论文解析 - 知乎 (zhihu.com)</a></p><p>5.Temporal Coherence or Temporal Motion Which is More Critical for Video-based PersonRe-identification</p><p>一个可插入的模块 ，感觉 用处不大<a href="https://zhuanlan.zhihu.com/p/372876825">Temporal Coherence or Temporal Motion Which is More Critical for Video-based PersonRe-identification - 知乎 (zhihu.com)</a></p><p><a href="https://raoyongming.github.io/files/temporal_coherence.pdf">temporal_coherence.pdf (raoyongming.github.io)</a></p><p>6.<a href="https://zhuanlan.zhihu.com/p/446739441">光流模型概述：从 PWC-Net 到 RAFT - 知乎 (zhihu.com)</a></p><p>7.单张模型生成一堆，可以借鉴光流的用法</p><p><a href="https://blog.csdn.net/a529975125/article/details/91601686">(18条消息) 【论文阅读】Video Generation from Single Semantic Label Map-CVPR2019_Vincent_gc的博客-CSDN博客</a></p><p>8.[低清视频也能快速转高清：超分辨率算法TecoGAN - 知乎 (<a href="http://zhihu.com">zhihu.com</a>)](<a href="https://zhuanlan.zhihu.com/p/62610640#:~:text=%E5%9C%A8%E4%B8%80%E7%AF%87%E5%90%8D%E4%B8%BA%E3%80%8CTemporally">https://zhuanlan.zhihu.com/p/62610640#:~:text=在一篇名为「Temporally</a> Coherent GANs for,Video Super-Resolution (TecoGAN)」的论文中，来自慕尼黑工业大学的研究人员提出了一种用于实现视频超分辨率的新型 GAN ——TecoGAN。)</p><p>bn的问题：GDN</p><p><a href="https://blog.csdn.net/weixin_41786536/article/details/100547726">适合于图像重建问题的归一化层：GENERALIZED NORMALIZATION TRANSFORMATION(GDN)_density modeling of images using a generalized nor_ch ur h的博客-CSDN博客</a></p><p>sean spade adain</p><p><a href="https://zhuanlan.zhihu.com/p/59710819">视频生成的前沿论文，看我们推荐的7篇就够了 - 知乎 (zhihu.com)</a></p><p><a href="https://blog.csdn.net/lgzlgz3102/article/details/127201668">(18条消息) Imagen Video &amp; Phenaki：谷歌提出的新AI视频生成技术_机器学习与AI生成创作的博客-CSDN博客</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;主要思路: 在e2vid网络的基础上进行改进，从两个方面入手：1.从视频生成的角度出发，在网络中融入网络，增强网络的时序相关性（temporal coherence）2.从图像生成的角度出发，增强网络重构的空间约束，使每一帧重构图像质量更高（修改bn，类似adain，spa</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Back to Event Basics:Self-Supervised Learning of Image Reconstruction</title>
