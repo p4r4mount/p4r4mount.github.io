@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-13T12:17:45.434Z</updated>
+  <updated>2023-03-13T15:27:38.351Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,15 +17,29 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ReRe</title>
+    <title>Consistent Video Style Transfer via Relaxation and Regularization</title>
     <link href="http://example.com/2023/03/13/ReRe/"/>
     <id>http://example.com/2023/03/13/ReRe/</id>
     <published>2023-03-13T12:17:45.000Z</published>
-    <updated>2023-03-13T12:17:45.434Z</updated>
+    <updated>2023-03-13T15:27:38.351Z</updated>
+    
+    <content type="html"><![CDATA[<h1>Consistent Video Style Transfer via Relaxation and Regularization</h1><p>2020 TIP</p><h2 id="abstract">Abstract</h2><p>​temporally consistent style transfer是有挑战性的东西，现有的方法无论是依赖于大量具有光流的视频数据，还是使用单帧regularizers，都无法处理强烈的运动或复杂的变化，因此在真实视频上的性能有限。</p><p>​在本文中，我们通过共同考虑stylization和temporal consistency的内在属性来解决这个问题。我们首先找出风格迁移与时间一致性冲突的原因，并提出通过relax（放松）目标函数来调和这一矛盾，从而使风格化损失项对运动更具鲁棒性。通过relaxation，风格迁移对帧间变化更robust。然后，我们提供了一个新的formulation和时间一致性的理解。在此基础上，我们分析了现有训练策略的不足，并推导出一种新的正则化方法。</p><p>​实验表明，所提出的正则化方法可以更好地平衡空间和时间性能。基于松弛和正则化，我们设计了一个zero-shot视频风格传输框架。此外，为了更好地迁移特征，我们引入了一个新的module来动态调整通道间分布。定量和定性结果表明，我们的方法优于最先进的风格转移方法。<a href="https://daooshee.github.io/ReReVST/">https://daooshee.github.io/ReReVST/</a></p><h2 id="introduction">Introduction</h2><p>​视频风格迁移的难点在于视频风格化和时间一致性的矛盾，我们用调整风格损失来缓解这一矛盾。</p><p>​通过relaxing style loss的shape-sensitivity，可以直接提高时间一致性。其次，通过理论分析，我们发现无论是传统的视频训练方式，还是最近提出的一些单帧正则化，都与时间一致性的本质存在矛盾，会导致欠拟合，从而降低网络性能。</p><p>​基于数学建模的方法，我们提出了新的compound regularization能够更符合时序变化的规律。大量的实验证明了所提出的正则化在平衡时间稳定性和stylization效果方面的有效性。改进视频风格转换的另一个方面是引入inter-frame relationship（帧间关系），这有利于长期的时间一致性。然而，许多模型通过估计光流来实现这一点，这样做既低效又不robust。相反，我们建议share global features。整个序列的特征分布一致，网络对运动和光照变化的就更robust，且不影响stylization效果。</p><p>​最后，在特征迁移（style migration）方面，我们设计了一个动态滤波器（dynamic filter）来调整通道内inner和通道间inter-channel的特征分布，从而更好地重建style pattern。</p><p>​贡献：</p><ul><li>我们提出了一种新颖的视频风格转换框架，既具有优越的时间一致性，又具有视觉上令人愉悦的stylization效果。开发了一种强大的端到端可训练滤波器，用于动态调整通道间特征分布，改善了颜色和纹理重建。实验结果证明了该框架的优越性。</li><li>我们分析了程式化与时间一致性之间的冲突。为了缓解冲突，我们尝试通过精心设计的动作来放style loss，这可以有效地提高时间一致性，而不降低风格转移效果。</li><li>我们提供了时间一致性的理论分析和通用建模，从中我们得到了一种新的正则化，它在平衡空间和时间性能方面具有卓越的有效性，并可以帮助其他计算机视觉视频任务。</li></ul><h3 id="modeling-of-temporal-consistency：">Modeling of Temporal Consistency：</h3><p>​</p><p><img src="image-20230313202205533.png" alt="image-20230313202205533"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;Consistent Video Style Transfer via Relaxation and Regularization&lt;/h1&gt;
+&lt;p&gt;2020 TIP&lt;/p&gt;
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+&lt;p&gt;​	temporally c</summary>
+      
     
     
     
+    <category term="paper" scheme="http://example.com/categories/paper/"/>
     
+    
+    <category term="video transfer" scheme="http://example.com/tags/video-transfer/"/>
     
   </entry>
   
