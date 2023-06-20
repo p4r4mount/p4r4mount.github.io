@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-06-06T12:26:06.948Z</updated>
+  <updated>2023-06-20T15:23:26.637Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://example.com/2023/06/06/HyperE2vid/"/>
     <id>http://example.com/2023/06/06/HyperE2vid/</id>
     <published>2023-06-06T08:02:37.000Z</published>
-    <updated>2023-06-06T12:26:06.948Z</updated>
+    <updated>2023-06-20T15:23:26.637Z</updated>
     
-    <content type="html"><![CDATA[<h1>HyperE2VID: Improving Event-Based Video Reconstruction via Hypernetworks</h1><p>code: 未开源  <a href="https://arxiv.org/pdf/2305.06382.pdf">paper</a></p><h2 id="abstract">Abstract</h2><p>​没啥motivation，提出了HyperE2VID，使用hypernetworks和动态卷积（dynamic convolutions）来生成每像素的自适应filters，该滤波器由context fusion模块指导，该模块结合voxel grid和上一帧重建的信息，类似spade。还使用了课程学习策略（curriculum learning strategy）来使训练更robust。比ET-Net参数更少，性能更好。</p><p><img src="image-20230606161458558.png" alt="image-20230606161458558"></p><h2 id="method">Method</h2><p>​事件处理跟正常方法差别不大，但是进行了一点约束，使每个生成的图像只依赖于过去的事件。这样方法可以用于从相机中实时重构事件。用固定时间<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">\Delta T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Δ</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>的voxel grid来表征事件，B=5。</p><h3 id="hypere2vid：">HyperE2VID：</h3><p>​inference阶段，每个时间间隔重构一帧图像，主干网络类似E2VID，然后，用hypernetworks, dynamic convolutions, 和context fusion模块来增强网络，成为HyperE2VID。</p><p>​下图为整体框架，由主网络F和生成动态参数部分的hyper网络构成。</p><p><img src="image-20230606161530019.png" alt="image-20230606161530019"></p>]]></content>
+    <content type="html"><![CDATA[<h1>HyperE2VID: Improving Event-Based Video Reconstruction via Hypernetworks</h1><p>code: 未开源  <a href="https://arxiv.org/pdf/2305.06382.pdf">paper</a></p><h2 id="abstract">Abstract</h2><p>​没啥motivation，提出了HyperE2VID，使用hypernetworks和动态卷积（dynamic convolutions）来生成每像素的自适应filters，该滤波器由context fusion模块指导，该模块结合voxel grid和上一帧重建的信息，类似spade。还使用了课程学习策略（curriculum learning strategy）来使训练更robust。比ET-Net参数更少，性能更好。</p><p><img src="image-20230606161458558.png" alt="image-20230606161458558"></p><h2 id="method">Method</h2><p>​事件处理跟正常方法差别不大，但是进行了一点约束，使每个生成的图像只依赖于过去的事件。这样方法可以用于从相机中实时重构事件。用固定时间<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">\Delta T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Δ</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>的voxel grid来表征事件，B=5。</p><h3 id="hypere2vid：">HyperE2VID：</h3><p>​inference阶段，每个时间间隔重构一帧图像，主干网络类似E2VID，然后，用hypernetworks, dynamic convolutions, 和context fusion模块来增强网络，成为HyperE2VID。</p><p>​下图为整体框架，由主网络F和生成动态参数部分的hyper网络构成。从输入到输出，主网络F由一个head层、三个循环编码器、两个残差块、一个context-guided dynamic encoder（CGDD），两个标准的decoder和prediction layer构成。hyper网络由dynamic filter generation（DFG）块和context fusion（CF）构成。为</p><p><img src="image-20230606161530019.png" alt="image-20230606161530019"></p>]]></content>
     
     
       
