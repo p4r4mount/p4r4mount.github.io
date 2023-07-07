@@ -1,3 +1,4 @@
+http://example.com/2023/07/06/shuangmu/
 http://example.com/2023/05/16/evreal/
 http://example.com/2023/06/06/HyperE2vid/
 http://example.com/2023/04/24/vrt/
@@ -28,6 +29,7 @@ http://example.com/tags/style-transfer/
 http://example.com/tags/video-transfer/
 http://example.com/tags/Video-Super-Resolution/
 http://example.com/tags/video-restoration/
+http://example.com/tags/paper/
 http://example.com/categories/paper/
 http://example.com/categories/tricks-%E6%80%BB%E7%BB%93/
 http://example.com/categories/%E6%9D%82%E6%9D%82%E6%8A%80%E6%9C%AF/

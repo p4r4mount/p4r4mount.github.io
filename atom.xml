@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-06-25T14:31:10.181Z</updated>
+  <updated>2023-07-06T08:41:48.332Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Learning Event Guided High Dynamic Range Video Reconstruction</title>
+    <link href="http://example.com/2023/07/06/shuangmu/"/>
+    <id>http://example.com/2023/07/06/shuangmu/</id>
+    <published>2023-07-06T08:23:49.000Z</published>
+    <updated>2023-07-06T08:41:48.332Z</updated>
+    
+    <content type="html"><![CDATA[<h1>Learning Event Guided High Dynamic Range Video Reconstruction</h1><p><a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Yang_Learning_Event_Guided_High_Dynamic_Range_Video_Reconstruction_CVPR_2023_paper.pdf">paper</a>, <a href="https://github.com/YixinYang-00/HDRev">code</a></p><p><img src="image-20230706164138866.png" alt="image-20230706164138866"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;Learning Event Guided High Dynamic Range Video Reconstruction&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://openaccess.thecvf.com/content/CVPR2023/papers/Yan</summary>
+      
+    
+    
+    
+    
+    <category term="paper" scheme="http://example.com/tags/paper/"/>
+    
+  </entry>
   
   <entry>
     <title>HyperE2VID:Improving Event-Based Video Reconstruction via Hypernetworks</title>
